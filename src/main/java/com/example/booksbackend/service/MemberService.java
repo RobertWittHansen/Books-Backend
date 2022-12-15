@@ -21,8 +21,8 @@ public class MemberService {
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
     }
-    public Member getMember(int memberId) {
-        return memberRepository.findById(memberId)
+    public Member getMember(String member_id) {
+        return memberRepository.findById(member_id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Member not Found"));
     }
     public Member createMember(Member member){
@@ -31,7 +31,7 @@ public class MemberService {
     public Member editMember(Member member) {
         return memberRepository.save(member);
     }
-    public Member deleteMember(int memberId) {
+    public Member deleteMember(String memberId) {
         Optional<Member> member = memberRepository.findById(memberId);
         if(member.isPresent()){
             memberRepository.delete(member.get());

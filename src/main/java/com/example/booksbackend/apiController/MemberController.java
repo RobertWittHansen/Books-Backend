@@ -28,7 +28,7 @@ public class MemberController {
     }
 
     @GetMapping(path = "/{member_id}")
-    public Member getMember(@PathVariable int member_id){
+    public Member getMember(@PathVariable String member_id){
         return memberService.getMember(member_id);
     }
 
@@ -42,7 +42,7 @@ public class MemberController {
         return memberService.editMember(member);
     }
     @DeleteMapping("/{member_id}")
-    public Member deleteMember(@PathVariable int member_id){
+    public Member deleteMember(@PathVariable String member_id){
         return memberService.deleteMember(member_id);
     }
 

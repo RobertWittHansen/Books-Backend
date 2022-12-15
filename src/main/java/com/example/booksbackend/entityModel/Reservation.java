@@ -32,6 +32,9 @@ public class Reservation {
     //---------------Database dependencies.
     @ManyToOne
     Member member;
+
+    @ManyToOne
+    Book book;
     //---------------Database dependencies.
 
 
