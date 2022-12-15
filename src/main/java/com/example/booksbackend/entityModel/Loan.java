@@ -23,7 +23,12 @@ import java.time.LocalDate;
 @Entity
 public class Loan {
     //---------------Fields / attribute.
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "loan_id", nullable = false)
+    private int id;
+
     @Column(length = 255, nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     @CreationTimestamp
@@ -43,8 +48,13 @@ public class Loan {
     @ManyToOne
     Member member;
 
-
-    //---------------Fields / attribute.
+    public Loan(LocalDate dueDate, LocalDate returnDate, Book book, Member member) {
+        this.dueDate = dueDate;
+        this.returnDate = returnDate;
+        this.book = book;
+        this.member = member;
+    }
+//---------------Fields / attribute.
 
 
 
