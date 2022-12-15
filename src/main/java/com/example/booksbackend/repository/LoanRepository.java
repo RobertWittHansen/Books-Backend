@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 
-public interface LoanRepository extends JpaRepository<Loan, LocalDate> {
+public interface LoanRepository extends JpaRepository<Loan, Integer> {
 }

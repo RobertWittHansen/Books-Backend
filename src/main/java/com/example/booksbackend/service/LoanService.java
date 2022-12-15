@@ -1,6 +1,7 @@
 package com.example.booksbackend.service;
 
 
+import com.example.booksbackend.DTO.LoanRequest;
 import com.example.booksbackend.entityModel.Book;
 import com.example.booksbackend.entityModel.Loan;
 import com.example.booksbackend.entityModel.Member;
@@ -28,22 +29,30 @@ public class LoanService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Loan> getLoan(){
+    public List<Loan> getLoans(){
         return loanRepository.findAll();
     }
 
-    public Loan getloanById(LocalDate id){
+    public Loan getloanById(int id){
         return loanRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact not found"));
     }
 
-    public Loan loanBook(LocalDate dueDate, LocalDate returnDate, String username, int bookId) {
+    public void addLoan(LocalDate dueDate, LocalDate returnDate, String username, int bookId) {
         Member member = memberRepository.findById(username).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"No member with this id found"));
         Book book = bookRepository.findById(bookId).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"No member with this id found"));
 
-        return "";
+        Loan loan = new Loan(dueDate, returnDate, book, member);
+        loanRepository.save(loan);
     }
 
+    public void editLoan(LoanRequest loanRequest, int id){
+        Loan loan = loanRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact with this id doesn't exist"));
+    }
 
+    public void deleteLoan(int id){
+        Loan loan = loanRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact with this id doesn't exist"));
+        loanRepository.delete(loan);
+    }
 }
