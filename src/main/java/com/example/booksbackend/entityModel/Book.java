@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //---------------Lombok.
 @Getter
 @Setter
@@ -30,7 +34,15 @@ public class Book {
     private String publisher;
     @Column(length = 255)
     private int publisherYear;
-    //---------------Fields / attribute.
+
+    public Book(int isbn, String title, String author, String publisher, int publisherYear) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.publisherYear = publisherYear;
+    }
+//---------------Fields / attribute.
 
 
     //---------------Database dependencies.
