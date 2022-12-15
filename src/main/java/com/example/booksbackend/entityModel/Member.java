@@ -17,7 +17,6 @@ import lombok.Setter;
 public class Member {
     //---------------Fields / attribute.
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id", nullable = false)
     private String username;
     @Column(length = 255)
