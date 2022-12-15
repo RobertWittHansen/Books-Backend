@@ -13,7 +13,6 @@ import lombok.Setter;
 @AllArgsConstructor
 //---------------Lombok.
 
-
 @Entity //-- Maven -- Et object som vi skal burger i DB-tabel. Fortæller Der skal laves en table af samme navn some object.
 public class Member {
     //---------------Fields / attribute.
@@ -36,16 +35,6 @@ public class Member {
 
     //---------------Constructor.
     //---------------Constructor.
-
-
-
-
-
-
-
-
-
-
 
 
 }
