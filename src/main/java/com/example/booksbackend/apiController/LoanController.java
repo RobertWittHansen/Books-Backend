@@ -43,9 +43,9 @@ public class LoanController {
          loanService.editLoan(loanRequest, id);
     }
 
+
     @DeleteMapping("/{id}")
     public void deleteLoan(@PathVariable int id){
         loanService.deleteLoan(id);
     }
-
 }

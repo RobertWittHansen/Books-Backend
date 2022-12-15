@@ -40,6 +40,11 @@ public class Reservation {
 
 
 //---------------Reservation class.
+
+    public Reservation(Member member, Book book) {
+        this.member = member;
+        this.book = book;
+    }
 //---------------Reservation class.
 
 //---------------Constructor.
