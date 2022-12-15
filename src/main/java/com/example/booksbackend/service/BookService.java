@@ -23,6 +23,10 @@ public class BookService {
         return books;
     }
 
+    public Book getBooksById(int id) {
+        return bookRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact not found"));
+    }
+
 
     public Book addBook(int isbn, String title, String author, String publisher, int publisherYear){
         Book book = new Book(isbn, title, author, publisher, publisherYear);
@@ -43,7 +47,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public void deleteContact(int id) {
+    public void deleteBook(int id) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact with this id doesn't exist"));
         bookRepository.delete(book);
     }
