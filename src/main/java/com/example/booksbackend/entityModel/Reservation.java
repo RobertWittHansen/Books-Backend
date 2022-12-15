@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 //---------------Lombok.
 @Getter
@@ -22,15 +24,17 @@ public class Reservation {
     //---------------Fields / attribute.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reservation_id", nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
-    private LocalDate reservationDate;
+    int id;
+    @CreationTimestamp
+    private LocalDateTime reservationDate;
     //---------------Fields / attribute.
 
+    //---------------Database dependencies.
+    @ManyToOne
+    Member member;
+    //---------------Database dependencies.
 
 
-//---------------Database dependencies.
-//---------------Database dependencies.
 
 //---------------Reservation class.
 //---------------Reservation class.
